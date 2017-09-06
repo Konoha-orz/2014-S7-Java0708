@@ -70,9 +70,6 @@ public class login extends HttpServlet {
 				request.getSession().setAttribute("username", username);
 				request.getSession().setAttribute("user_id", cnt);
 
-			} else {
-				request.getSession().setAttribute("username", "NULL");
-				System.out.println("");
 			}
 
 		} catch (ClassNotFoundException e) {
