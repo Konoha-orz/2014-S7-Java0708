@@ -45,6 +45,9 @@ public class App
 		SqlSessionFactory ssf = new SqlSessionFactoryBuilder().build(reader);
 
 		SqlSession session = ssf.openSession();
+		
+		
+		
 
 		// 第一种映射方式
 
@@ -69,6 +72,21 @@ public class App
 			System.out.println(r.getRolename() + " " + r.getId() + " " + r.getDescription());
 
 		}
+		
+		
+        Role role = new Role();
+
+        role.setDescription("test role");
+
+        role.setRolename("TestRole");
+
+        
+
+        ird.insertRole(role);
+
+        
+
+        session.commit();
 
 		// 第三种映射方式 注解配置
 

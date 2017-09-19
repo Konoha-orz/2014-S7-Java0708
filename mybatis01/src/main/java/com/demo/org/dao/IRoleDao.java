@@ -6,4 +6,5 @@ import com.demo.org.bean.Role;
 
 public interface IRoleDao {
 	public List<Role> getAll();
+	public int insertRole(Role role);
 }
