@@ -1,5 +1,7 @@
 package com.demo.org.bean;
 
+import java.util.List;
+
 public class Account {
 
 	private int id;
@@ -7,6 +9,16 @@ public class Account {
 	private String username;
 
 	private String password;
+	
+	private List<UserLog> ulList;
+
+	public List<UserLog> getUlList() {
+		return ulList;
+	}
+
+	public void setUlList(List<UserLog> ulList) {
+		this.ulList = ulList;
+	}
 
 	public int getId() {
 

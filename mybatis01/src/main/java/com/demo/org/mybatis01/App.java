@@ -60,49 +60,70 @@ public class App
 		}
 
 		System.out.println("--------------------");
-
-		// 第二种映射方式
-
-		IRoleDao ird = session.getMapper(IRoleDao.class);
-
-		List<Role> roleList = ird.getAll();
-
-		for (Role r : roleList) {
-
-			System.out.println(r.getRolename() + " " + r.getId() + " " + r.getDescription());
-
-		}
 		
 		
-        Role role = new Role();
+		 List<Account> accountList2 = session.selectList("test.getAll2");
 
-        role.setDescription("test role");
+	        for(Account account:accountList2) {
 
-        role.setRolename("TestRole");
+	        	System.out.println(account.getUsername());
 
-        
+	        	if(account.getUlList() == null) {
 
-        ird.insertRole(role);
+	        		continue;
 
-        
+	        	}
 
-        session.commit();
+	        	for(UserLog ul : account.getUlList()) {
 
-		// 第三种映射方式 注解配置
+	        		System.out.println("  "+ul.getDescription());
 
-		// 添加映射配置
+	        	}
 
-		session.getConfiguration().addMapper(IUserLog.class);
+	        }
 
-		IUserLog iul = session.getMapper(IUserLog.class);
-
-		List<UserLog> userLogList = iul.getAll();
-
-		for (UserLog ul : userLogList) {
-
-			System.out.println(ul.getDescription());
-
-		}
+//		// 第二种映射方式
+//
+//		IRoleDao ird = session.getMapper(IRoleDao.class);
+//
+//		List<Role> roleList = ird.getAll();
+//
+//		for (Role r : roleList) {
+//
+//			System.out.println(r.getRolename() + " " + r.getId() + " " + r.getDescription());
+//
+//		}
+//		
+//		
+//        Role role = new Role();
+//
+//        role.setDescription("test role");
+//
+//        role.setRolename("TestRole");
+//
+//        
+//
+//        ird.insertRole(role);
+//
+//        
+//
+//        session.commit();
+//
+//		// 第三种映射方式 注解配置
+//
+//		// 添加映射配置
+//
+//		session.getConfiguration().addMapper(IUserLog.class);
+//
+//		IUserLog iul = session.getMapper(IUserLog.class);
+//
+//		List<UserLog> userLogList = iul.getAll();
+//
+//		for (UserLog ul : userLogList) {
+//
+//			System.out.println(ul.getDescription());
+//
+//		}
 
 	}
 
