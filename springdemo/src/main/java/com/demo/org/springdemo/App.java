@@ -18,7 +18,7 @@ public class App
         ApplicationContext ac= new ClassPathXmlApplicationContext("config/service.xml");
         BeanClass01 bc1 = (BeanClass01) ac.getBean("bc1");
         bc1.setmString("bc1");
-        System.out.println(bc1.getmString());
+       
         
         
         BeanClass01 bc2=(BeanClass01) ac.getBean("fb");

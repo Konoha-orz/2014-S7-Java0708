@@ -23,6 +23,8 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 
 import com.demo.org.bean.Account;
+import com.demo.org.bean.Role;
+import com.demo.org.dao.IRoleDao;
 
 
 
@@ -52,6 +54,8 @@ public class App
 
         
 
+      //第一种映射方式
+
         List<Account> accountList = session.selectList("test.getAll");
 
         
@@ -59,6 +63,23 @@ public class App
         for(Account account:accountList) {
 
         	System.out.println(account.getUsername());
+
+        }
+
+        System.out.println("--------------------");
+
+        //第二种映射方式
+
+        
+
+        IRoleDao ird = session.getMapper(IRoleDao.class);
+
+        List<Role> roleList = ird.getAll();
+
+        for(Role r : roleList) {
+
+        	System.out.println(r.getRolename()+" "+r.getId()+" "+r.getDescription());
+        	
 
         }
 
