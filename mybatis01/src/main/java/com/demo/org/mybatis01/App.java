@@ -10,8 +10,6 @@ import java.io.Reader;
 
 import java.util.List;
 
-
-
 import org.apache.ibatis.io.Resources;
 
 import org.apache.ibatis.session.SqlSession;
@@ -20,69 +18,74 @@ import org.apache.ibatis.session.SqlSessionFactory;
 
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
-
-
 import com.demo.org.bean.Account;
 import com.demo.org.bean.Role;
+import com.demo.org.bean.UserLog;
 import com.demo.org.dao.IRoleDao;
-
-
+import com.demo.org.dao.IUserLog;
 
 /**
-
+ * 
  * Hello world!
-
  *
-
+ * 
+ * 
  */
 
-public class App 
+public class App
 
 {
 
-    public static void main( String[] args ) throws IOException
+	public static void main(String[] args) throws IOException
 
-    {
+	{
 
-        Reader reader = Resources.getResourceAsReader("config/config.xml");
+		Reader reader = Resources.getResourceAsReader("config/config.xml");
 
-        SqlSessionFactory ssf = new SqlSessionFactoryBuilder().build(reader);
+		SqlSessionFactory ssf = new SqlSessionFactoryBuilder().build(reader);
 
-        
+		SqlSession session = ssf.openSession();
 
-        SqlSession session = ssf.openSession();
+		// 第一种映射方式
 
-        
+		List<Account> accountList = session.selectList("test.getAll");
 
-      //第一种映射方式
+		for (Account account : accountList) {
 
-        List<Account> accountList = session.selectList("test.getAll");
+			System.out.println(account.getUsername());
 
-        
+		}
 
-        for(Account account:accountList) {
+		System.out.println("--------------------");
 
-        	System.out.println(account.getUsername());
+		// 第二种映射方式
 
-        }
+		IRoleDao ird = session.getMapper(IRoleDao.class);
 
-        System.out.println("--------------------");
+		List<Role> roleList = ird.getAll();
 
-        //第二种映射方式
+		for (Role r : roleList) {
 
-        
+			System.out.println(r.getRolename() + " " + r.getId() + " " + r.getDescription());
 
-        IRoleDao ird = session.getMapper(IRoleDao.class);
+		}
 
-        List<Role> roleList = ird.getAll();
+		// 第三种映射方式 注解配置
 
-        for(Role r : roleList) {
+		// 添加映射配置
 
-        	System.out.println(r.getRolename()+" "+r.getId()+" "+r.getDescription());
-        	
+		session.getConfiguration().addMapper(IUserLog.class);
 
-        }
+		IUserLog iul = session.getMapper(IUserLog.class);
 
-    }
+		List<UserLog> userLogList = iul.getAll();
+
+		for (UserLog ul : userLogList) {
+
+			System.out.println(ul.getDescription());
+
+		}
+
+	}
 
 }
