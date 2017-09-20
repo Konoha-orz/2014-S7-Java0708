@@ -37,14 +37,7 @@ public class IndexController {
 		List<Account> accountList = iac.getAll();//accountService.getCount();
             
 		List<Role> roleList=irs.getAll();
-		
-		
-		
-		
-		System.out.println(accountList.get(1).getUsername());	
-		System.out.println(roleList.get(0).getRole_name());
-		
-		
+				
 		resultMap.addAttribute("account",accountList.get(2));
 		resultMap.addAttribute("rolelist",roleList);
 		resultMap.addAttribute("role1",roleList.get(0));

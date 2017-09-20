@@ -11,7 +11,7 @@
 
 <head>
 
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
 <title>Index</title>
 
@@ -33,7 +33,7 @@
 	<div>
 	 <c:forEach items="${rolelist}" var="role">
 	 
-	 <p> Id: ${role.id}  RoleName:${role.rolename }  Des: ${role.description}</p>
+	 <p> Id: ${role.id}  RoleName:${role.role_name }  Des: ${role.description}</p>
 	 
 	 </c:forEach>
 	 ${role1.id }     
@@ -42,10 +42,30 @@
 	 
 	 
 	 
-	 <!-- role1.role_name 不正确，bean虽为role_name但此处用rolename-->
-	 ${role1.rolename}
+	 
+	 ${role1.role_name}
 	 
 	 
+	</div>
+	
+	
+	<br/>
+	<h1>插入数据：</h1>
+	<div>
+	<form action="insert" method="post">
+	<table>
+	<tr>
+	<td>RoleName:</td>
+	<td><input type="text" name="rolename" /></td>
+	</tr>
+	<tr>
+	<td>Description:</td>
+	<td><input type="text" name="des" /></td>
+	</tr>
+	</table>
+	<input type="submit" value="提交"/>
+	</form>
+	
 	</div>
 	
 </body>
