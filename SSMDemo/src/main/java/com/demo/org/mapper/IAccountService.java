@@ -6,4 +6,5 @@ import com.demo.org.bean.Account;
 
 public interface IAccountService {
 	public List<Account> getAll();
+	public Account getUser(Account account);
 }

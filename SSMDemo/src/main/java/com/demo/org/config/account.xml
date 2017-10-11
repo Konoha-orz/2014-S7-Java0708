@@ -8,4 +8,7 @@
 	<select id="getAll" resultType="com.demo.org.bean.Account">
      select * from account
     </select>
+    <select id="getUser" resultType="com.demo.org.bean.Account">
+     select * from account where username=#{username}
+    </select>
 </mapper>

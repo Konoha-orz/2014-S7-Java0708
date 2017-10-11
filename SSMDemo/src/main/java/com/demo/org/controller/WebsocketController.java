@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 
 @RequestMapping("/websocket")
-public class WebController {
+public class WebsocketController {
 	
 
 	
