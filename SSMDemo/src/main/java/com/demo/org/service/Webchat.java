@@ -16,6 +16,7 @@ import com.demo.org.bean.Account;
 import com.demo.org.configurator.GetHttpSessionConfigurator;
 
 //该注解用来指定一个URI，客户端可以通过这个URI来连接到WebSocket。类似Servlet的注解mapping。无需在web.xml中配置。
+//其中 获取HttpSession需要 配置一个GetHttpSessionConfigurator，该GetHttpSessionConfigurator继承Configurator类.其后在OnOpen中EndpointConfig 加载
 @ServerEndpoint(value="/webchat",configurator=GetHttpSessionConfigurator.class)
 public class Webchat {
   // 静态变量，用来记录当前在线连接数。应该把它设计成线程安全的。

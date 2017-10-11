@@ -43,13 +43,24 @@ window.onbeforeunload = function() {
     }
 </script>
 </head>
+<% 
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
+
+
 <body>
+    <a href="<%=basePath %>logout">Logout</a>
+    
     <div
-        style="width: 600px; height: 240px; overflow-y: auto; border: 1px solid #333;"
+        style="width: 600px; height: 450px; overflow-y: auto; border: 1px solid #333;position: relative;padding-left: 5px;padding-bottom: 5px;"
         id="show">
-        <div id="showChatMessage"></div>
-        <input type="text" size="80" id="msg" name="msg" placeholder="输入聊天内容" />
+        <div id="showChatMessage" ></div>
+        <div style="position: absolute;bottom: 5px">
+        <input type="text" size="80" id="msg" name="msg" placeholder="输入聊天内容"  /><br/>
         <input type="button" value="发送" id="sendBn" name="sendBn"
             onclick="send()">
+            </div>
+            </div>
 </body>
 </html>
