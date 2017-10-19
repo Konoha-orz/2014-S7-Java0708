@@ -11,10 +11,12 @@
 	<bean id="ds"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		<property name="url"
-			value="jdbc:mysql://localhost:3306/videoproject?useSSL=false" />
-		<property name="username" value="account4" />
-		<property name="password" value="account4" />
+		<property name="url" 
+			value="jdbc:mysql://localhost:5555/videoproject?useSSL=false" />
+		<property name="username" value="konoha" />
+		<property name="password" value="yangjian233" />
+		
+		
 	</bean>
 
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
@@ -27,6 +29,7 @@
 		<property name="basePackage" value="com.demo.org.mapper" />
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>
 	</bean>
-
-
+    
+    
+   
 </beans>

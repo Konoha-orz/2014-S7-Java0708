@@ -18,6 +18,7 @@ import com.demo.org.bean.Role;
 import com.demo.org.mapper.IAccountService;
 import com.demo.org.mapper.IRoleService;
 import com.demo.org.service.IAccount;
+import com.demo.org.util.JschUtil;
 
 @Controller
 
@@ -45,6 +46,15 @@ public class LoginController {
 
 	public String submit(ModelMap resultMap,HttpServletRequest request,HttpSession session) {
 		
+		//此处通过SSH外部访问远程mysql服务器需要用到JSCH,服务器端上不需要
+		JschUtil sshutil=new JschUtil();
+		
+		//*************SSH端口转接开启
+		sshutil.open();
+		
+		
+		
+		
 		String account=request.getParameter("account");
 		String password=request.getParameter("password");
 		Account loginuser=new Account();
@@ -52,6 +62,9 @@ public class LoginController {
 		
 		Account user=iac.getUser(loginuser);
 
+		//**************SSH端口转接关闭
+		sshutil.close();
+		
 		if(user.getPassword().equals(password)) {
 			session.setAttribute("user", user);
 			return "webchat";
